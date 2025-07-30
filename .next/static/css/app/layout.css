@@ -859,9 +859,6 @@ video {
 .h-\[460px\]{
   height: 460px;
 }
-.h-\[700px\]{
-  height: 700px;
-}
 .h-full{
   height: 100%;
 }
@@ -1242,9 +1239,6 @@ video {
 }
 .rounded-3xl{
   border-radius: 1.5rem;
-}
-.rounded-\[2\.5rem\]{
-  border-radius: 2.5rem;
 }
 .rounded-\[2rem\]{
   border-radius: 2rem;
@@ -2166,9 +2160,6 @@ video {
 }
 .opacity-80{
   opacity: 0.8;
-}
-.opacity-90{
-  opacity: 0.9;
 }
 .mix-blend-multiply{
   mix-blend-mode: multiply;

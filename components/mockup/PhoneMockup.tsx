@@ -1,8 +1,8 @@
 // 'use client'
 
 // import { useState } from 'react'
-// import nexusLogo from '../../public/images/nexuslogo.png' // Adjust path if needed
-// import Image from 'next/image'
+import nexusLogo from '../../public/images/nexuslogo.png' // Adjust path if needed
+import Image from 'next/image'
 
 // export default function PhoneMockup() {
 //   const [currentScreen, setCurrentScreen] = useState('home')
@@ -574,7 +574,7 @@ export default function NexusPayApp() {
 
   // Header component
   const Header = ({ title, showBack = false, showNotifications = false }) => (
-    <div className="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+    <div className="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-20 to-purple-700 text-white">
       <div className="flex items-center">
         {showBack && (
           <button 
@@ -584,14 +584,8 @@ export default function NexusPayApp() {
             <ArrowLeft className="w-5 h-5" />
           </button>
         )}
-        <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-            <span className="text-blue-600 font-bold text-lg">N</span>
-          </div>
-          <div>
-            <h1 className="text-xl font-bold">NexusPay</h1>
-            {title && <p className="text-sm opacity-90">{title}</p>}
-          </div>
+         <div className="">
+                <Image src={nexusLogo} alt="Nexus Pay Logo" width={48} height={47} className="rounded-md" />
         </div>
       </div>
       {showNotifications && (
