@@ -1,7 +1,6 @@
 // 'use client'
 
 // import { useState } from 'react'
-// import '../../styles/PhoneMockup.css'
 // import nexusLogo from '../../public/images/nexuslogo.png' // Adjust path if needed
 // import Image from 'next/image'
 
@@ -347,6 +346,7 @@
 //   )
 // }
 
+import '../../styles/PhoneMockup.css'
 import { useState, useEffect } from 'react'
 import { 
   Home, 
@@ -543,13 +543,11 @@ export default function NexusPayApp() {
 
   // Phone mockup component
   const PhoneFrame = ({ children }) => (
-    <div className="relative mx-auto">
-      <div className="w-85 h-[700px] bg-black rounded-[2.5rem] p-2 shadow-2xl">
-        <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative flex flex-col">
+    <div className="phone-container">
+        <div className="h-full bg-white rounded-[2rem] overflow-hidden relative flex flex-col">
           {children}
         </div>
       </div>
-    </div>
   )
 
   // Status bar component
@@ -1446,6 +1444,7 @@ export default function NexusPayApp() {
 
   // Main render
   return (
+ 
     <PhoneFrame>
       <StatusBar />
       
@@ -1477,5 +1476,6 @@ export default function NexusPayApp() {
       {/* Success Overlay */}
       <SuccessOverlay />
     </PhoneFrame>
+
   )
 }
