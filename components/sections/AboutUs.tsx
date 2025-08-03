@@ -1,24 +1,23 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
-import { 
-  Clock, 
-  Users, 
-  Building, 
-  Shield, 
-  Zap, 
-  Heart, 
-  Globe,
-  TrendingUp,
-  Award,
-  Target,
-  Sparkles,
-  CheckCircle,
-  ArrowRight,
-  Calendar,
-  MapPin,
-  Star
+import {
+    ArrowRight,
+    Award,
+    Building,
+    Calendar,
+    Clock,
+    Globe,
+    Heart,
+    MapPin,
+    Shield,
+    Sparkles,
+    Star,
+    Target,
+    TrendingUp,
+    Users,
+    Zap
 } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 // Mock useLanguage hook - replace with your actual implementation
 const useLanguage = () => ({
@@ -83,7 +82,7 @@ export default function AboutUs() {
 
   // Animated counters
   useEffect(() => {
-    const animateCounter = (setter: Function, target: number, duration = 2000) => {
+    const animateCounter = (setter:  (val: number) => void , target: number, duration = 2000) => {
       const increment = target / (duration / 16)
       let current = 0
 
@@ -105,14 +104,6 @@ export default function AboutUs() {
     }
   }, [isVisible])
 
-  // Auto-advance timeline
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTimeline((prev) => (prev + 1) % milestones.length)
-    }, 4000)
-
-    return () => clearInterval(interval)
-  }, [])
 
   const milestones = [
     {
@@ -137,6 +128,16 @@ export default function AboutUs() {
       color: 'from-[#ADEED9] to-[#0ABAB5]'
     }
   ]
+
+    // Auto-advance timeline
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTimeline((prev) => (prev + 1) % milestones.length)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [milestones.length])
+
 
   const values = [
     {
@@ -303,7 +304,7 @@ export default function AboutUs() {
             </div>
 
             <h2 className="text-5xl md:text-6xl font-extrabold mb-8 leading-tight">
-              <span className="bg-gradient-to-r from-[#0ABAB5] via-[#56DFCF] to-[#ADEED9] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
                 {t('about-us-title')}
               </span>
             </h2>
@@ -489,7 +490,7 @@ export default function AboutUs() {
 
           {/* Call to Action */}
           <div className={`text-center mt-20 ${isVisible ? 'animate-fadeIn' : 'opacity-0'}`} style={{ animationDelay: '1200ms' }}>
-            <button className="group relative inline-flex items-center px-12 py-6 bg-gradient-to-r from-[#0ABAB5] via-[#56DFCF] to-[#ADEED9] rounded-full text-white font-bold text-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-110 overflow-hidden">
+            <button className="group relative inline-flex items-center px-12 py-6 bg-gradient-to-r from-primary to-primary-dark rounded-full text-white font-bold text-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-110 overflow-hidden">
               <div className="absolute inset-0 shimmer-effect"></div>
               <MapPin className="w-6 h-6 mr-3 group-hover:animate-bounce relative z-10" />
               <span className="relative z-10">Rejoignez Notre Mission</span>

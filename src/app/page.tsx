@@ -69,8 +69,6 @@ export default function HomePage() {
       } } />
       <AIAssistantModal isOpen={false} onClose={function (): void {
         throw new Error('Function not implemented.')
-      } } onSwitchToLogin={function (): void {
-        throw new Error('Function not implemented.')
       } } />
     </>
   )

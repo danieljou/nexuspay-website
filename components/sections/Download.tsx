@@ -13,7 +13,7 @@ export default function Download() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const animateCounter = (setter: Function, target: number, duration = 2000) => {
+    const animateCounter = (setter:  (val: number) => void, target: number, duration = 2000) => {
       const increment = target / (duration / 16)
       let current = 0
 
@@ -182,10 +182,24 @@ export default function Download() {
                 }`}>
                   {/* Inner icon container */}
                   <div className="w-32 h-32 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                      <Image src={nexusLogo} alt="Nexus Pay Logo" width={80} height={70} className="rounded-md group-hover:text-purple-200 transition-colors duration-300 animate-float" />
-                      <path d="M5 15L10 5M14 19L19 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-                      <path d="M3 12H21" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-                      <circle cx="12" cy="12" r="2" fill="currentColor" className="animate-pulse"/>
+                    <Image
+                      src={nexusLogo}
+                      alt="Nexus Pay Logo"
+                      width={80}
+                      height={70}
+                      className="rounded-md group-hover:text-purple-200 transition-colors duration-300 animate-float"
+                    />
+                    
+                    <svg
+                      className="absolute inset-0 w-full h-full"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M5 15L10 5M14 19L19 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <path d="M3 12H21" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                      <circle cx="12" cy="12" r="2" fill="currentColor" className="animate-pulse" />
+                    </svg>
                   </div>
                 </div>
                 

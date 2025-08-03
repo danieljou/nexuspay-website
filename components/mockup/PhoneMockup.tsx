@@ -1,353 +1,9 @@
-// 'use client'
+'use client'
 
-// import { useState } from 'react'
 import nexusLogo from '../../public/images/nexuslogo.png' // Adjust path if needed
 import Image from 'next/image'
-
-// export default function PhoneMockup() {
-//   const [currentScreen, setCurrentScreen] = useState('home')
-//   const [activeNavItem, setActiveNavItem] = useState('home')
-//   const [showSuccess, setShowSuccess] = useState(false)
-//   const [formData, setFormData] = useState({
-//     recipient: '',
-//     amount: '',
-//     message: ''
-//   })
-
-//   const switchToHome = () => {
-//     setCurrentScreen('home')
-//     setActiveNavItem('home')
-//   }
-
-//   const switchToSendMoney = () => {
-//     setCurrentScreen('sendMoney')
-//     setActiveNavItem('send')
-//   }
-
-//   const showSuccessAnimation = () => {
-//     if (formData.recipient && formData.amount) {
-//       setShowSuccess(true)
-//       setTimeout(() => {
-//         setShowSuccess(false)
-//         setFormData({ recipient: '', amount: '', message: '' })
-//         switchToHome()
-//       }, 2000)
-//     }
-//   }
-
-//   const handleInputChange = (field, value) => {
-//     setFormData(prev => ({ ...prev, [field]: value }))
-//   }
-
-//   return (
-//     <div className="relative">
-//       {/* Phone Container */}
-//       <div className="phone-container">
-//         <div className="w-full h-full bg-white rounded-[2rem] overflow-hidden relative">
-          
-//           {/* Status Bar */}
-//           <div className="flex justify-between items-center px-6 py-3 bg-white text-black text-sm">
-//             <div className="flex items-center space-x-1">
-//               <div className="text-xs font-medium">9:41 AM</div>
-//             </div>
-//             <div className="flex items-center space-x-2">
-//               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-//                 <path d="M2 17h20v2H2v-2zM1.15 12.95L4 15.8l.85-.85L2.7 12.8l2.15-2.15L4 9.8 1.15 12.95zM6.7 12.8l2.15 2.15.85-.85L7.55 12.95 9.7 10.8l-.85-.85L6.7 12.8zM23 12.95L20.15 15.8l-.85-.85 2.15-2.15-2.15-2.15.85-.85L23 12.95z"/>
-//               </svg>
-//               <div className="w-6 h-3 border border-black rounded-sm">
-//                 <div className="w-4 h-1 bg-black rounded-sm mt-0.5 ml-0.5"></div>
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* App Navigation */}
-//           <div className="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-white-600 to-purple-600 text-white">
-//             {/* Logo */}
-//           <div className="flex items-center space-x-3">
-            
-//             <div className="text-2xl font-bold flex items-center">
-//               <div className="">
-//                 <Image src={nexusLogo} alt="Nexus Pay Logo" width={48} height={47} className="rounded-md" />
-//               </div>
-//               {/* <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-//                 Nexus<span className="font-extrabold">Pay</span>
-//               </span> */}
-//             </div>
-//           </div>
-//             <button className="p-2">
-//               <svg className="w-8 h-8" fill="00809D" viewBox="0 0 24 24" stroke="00809D">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-//               </svg>
-//             </button>
-//           </div>
-
-//           {/* Home Screen */}
-//           {currentScreen === 'home' && (
-//             <div className="flex-1 bg-gray-50 p-4 h-[460px] overflow-y-auto">
-//               {/* Balance Card */}
-//               <div className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl p-6 text-white mb-6">
-//                 <div className="flex justify-between items-start mb-4">
-//                   <div>
-//                     <div className="text-sm opacity-80 mb-1">Total Balance</div>
-//                     <div className="text-3xl font-bold">₣127,500.00</div>
-//                   </div>
-//                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-//                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-//                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM13 17h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-//                     </svg>
-//                   </div>
-//                 </div>
-                
-//                 <div className="text-lg tracking-wider mb-6">
-//                   •••• •••• •••• 7745
-//                 </div>
-                
-//                 <div className="flex justify-between items-center">
-//                   <div>
-//                     <div className="text-xs opacity-70">Valid Thru</div>
-//                     <div className="text-sm">12/28</div>
-//                   </div>
-//                   <div className="text-right">
-//                     <div className="text-xs opacity-70">CVV</div>
-//                     <div className="text-sm">•••</div>
-//                   </div>
-//                 </div>
-//               </div>
-
-//               {/* Quick Actions */}
-//               <div className="grid grid-cols-4 gap-4 mb-6">
-//                 <button 
-//                   onClick={switchToSendMoney}
-//                   className="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
-//                 >
-//                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-2">
-//                     <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-//                     </svg>
-//                   </div>
-//                   <div className="text-xs font-medium text-gray-700">Send</div>
-//                 </button>
-                
-//                 <button className="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-//                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-2">
-//                     <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-//                     </svg>
-//                   </div>
-//                   <div className="text-xs font-medium text-gray-700">Receive</div>
-//                 </button>
-                
-//                 <button className="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-//                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-2">
-//                     <svg className="w-6 h-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-//                     </svg>
-//                   </div>
-//                   <div className="text-xs font-medium text-gray-700">Bills</div>
-//                 </button>
-                
-//                 <button className="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-//                   <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-2">
-//                     <svg className="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-//                     </svg>
-//                   </div>
-//                   <div className="text-xs font-medium text-gray-700">Top Up</div>
-//                 </button>
-//               </div>
-
-//               {/* Transaction List */}
-//               <div className="bg-white rounded-xl shadow-sm">
-//                 <div className="p-4 border-b border-gray-100">
-//                   <h3 className="font-semibold text-gray-800">Recent Transactions</h3>
-//                 </div>
-                
-//                 <div className="p-4 flex items-center space-x-3 border-b border-gray-50">
-//                   <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-//                     <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-//                     </svg>
-//                   </div>
-//                   <div className="flex-1">
-//                     <div className="font-medium text-gray-800">Grocery Shopping</div>
-//                     <div className="text-sm text-gray-500">Today 2:30 PM</div>
-//                   </div>
-//                   <div className="text-red-500 font-semibold">-₣15,750</div>
-//                 </div>
-                
-//                 <div className="p-4 flex items-center space-x-3 border-b border-gray-50">
-//                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-//                     <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-//                     </svg>
-//                   </div>
-//                   <div className="flex-1">
-//                     <div className="font-medium text-gray-800">Money Received</div>
-//                     <div className="text-sm text-gray-500">Yesterday 6:45 PM</div>
-//                   </div>
-//                   <div className="text-green-500 font-semibold">+₣25,000</div>
-//                 </div>
-                
-//                 <div className="p-4 flex items-center space-x-3">
-//                   <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
-//                     <svg className="w-5 h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-//                     </svg>
-//                   </div>
-//                   <div className="flex-1">
-//                     <div className="font-medium text-gray-800">Electric Bill</div>
-//                     <div className="text-sm text-gray-500">Dec 15, 2023</div>
-//                   </div>
-//                   <div className="text-red-500 font-semibold">-₣8,500</div>
-//                 </div>
-//               </div>
-//             </div>
-//           )}
-
-//           {/* Send Money Screen */}
-//           {currentScreen === 'sendMoney' && (
-//             <div className="flex-1 bg-gray-50 h-[460px] overflow-y-auto">
-//               <div className="p-4 border-b border-gray-100 bg-white">
-//                 <div className="flex items-center">
-//                   <button 
-//                     onClick={switchToHome}
-//                     className="mr-3 p-2 rounded-full hover:bg-gray-100"
-//                   >
-//                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-//                     </svg>
-//                   </button>
-//                   <h2 className="text-lg font-semibold text-gray-800">Send Money</h2>
-//                 </div>
-//               </div>
-              
-//               {/* Recent Contacts */}
-//               <div className="p-4">
-//                 <h3 className="text-sm font-semibold text-gray-600 mb-3">Send to Recent</h3>
-//                 <div className="grid grid-cols-4 gap-4 mb-6">
-//                   <div className="flex flex-col items-center cursor-pointer">
-//                     <div className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-semibold mb-1">MA</div>
-//                     <div className="text-xs text-gray-600">Marie</div>
-//                   </div>
-//                   <div className="flex flex-col items-center cursor-pointer">
-//                     <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold mb-1">JM</div>
-//                     <div className="text-xs text-gray-600">Jean</div>
-//                   </div>
-//                   <div className="flex flex-col items-center cursor-pointer">
-//                     <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold mb-1">FT</div>
-//                     <div className="text-xs text-gray-600">Francine</div>
-//                   </div>
-//                   <div className="flex flex-col items-center cursor-pointer">
-//                     <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-gray-600 font-semibold mb-1">+</div>
-//                     <div className="text-xs text-gray-600">More</div>
-//                   </div>
-//                 </div>
-                
-//                 {/* Send Money Form */}
-//                 <div className="space-y-4">
-//                   <div>
-//                     <label className="block text-sm font-medium text-gray-700 mb-2">Recipient Email or Phone</label>
-//                     <input 
-//                       type="text" 
-//                       value={formData.recipient}
-//                       onChange={(e) => handleInputChange('recipient', e.target.value)}
-//                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-//                       placeholder="Enter email or phone number"
-//                     />
-//                   </div>
-                  
-//                   <div>
-//                     <label className="block text-sm font-medium text-gray-700 mb-2">Amount (XAF)</label>
-//                     <input 
-//                       type="number" 
-//                       value={formData.amount}
-//                       onChange={(e) => handleInputChange('amount', e.target.value)}
-//                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-//                       placeholder="0.00"
-//                     />
-//                   </div>
-                  
-//                   <div>
-//                     <label className="block text-sm font-medium text-gray-700 mb-2">Message (Optional)</label>
-//                     <input 
-//                       type="text" 
-//                       value={formData.message}
-//                       onChange={(e) => handleInputChange('message', e.target.value)}
-//                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-//                       placeholder="What's this for?"
-//                     />
-//                   </div>
-                  
-//                   <button 
-//                     onClick={showSuccessAnimation}
-//                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transition-shadow"
-//                   >
-//                     Send Money
-//                   </button>
-//                 </div>
-//               </div>
-//             </div>
-//           )}
-
-//           {/* Bottom Navigation */}
-//           <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 grid grid-cols-4">
-//             <button 
-//               onClick={switchToHome}
-//               className={`flex flex-col items-center py-2 ${activeNavItem === 'home' ? 'text-blue-600' : 'text-gray-400'}`}
-//             >
-//               <svg className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-//               </svg>
-//               <span className="text-xs">Home</span>
-//             </button>
-            
-//             <button 
-//               onClick={switchToSendMoney}
-//               className={`flex flex-col items-center py-2 ${activeNavItem === 'send' ? 'text-blue-600' : 'text-gray-400'}`}
-//             >
-//               <svg className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-//               </svg>
-//               <span className="text-xs">Send</span>
-//             </button>
-            
-//             <button className="flex flex-col items-center py-2 text-gray-400">
-//               <svg className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-//               </svg>
-//               <span className="text-xs">Cards</span>
-//             </button>
-            
-//             <button className="flex flex-col items-center py-2 text-gray-400">
-//               <svg className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-//               </svg>
-//               <span className="text-xs">Profile</span>
-//             </button>
-//           </div>
-
-//           {/* Success Animation Overlay */}
-//           {showSuccess && (
-//             <div className="absolute inset-0 bg-white flex items-center justify-center z-50">
-//               <div className="text-center">
-//                 <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
-//                   <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-//                   </svg>
-//                 </div>
-//                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Money Sent!</h3>
-//                 <p className="text-gray-600">Transaction completed successfully</p>
-//               </div>
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
 import '../../styles/PhoneMockup.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { 
   Home, 
   Send, 
@@ -358,9 +14,7 @@ import {
   Eye, 
   EyeOff, 
   Plus, 
-  Download, 
   Receipt, 
-  Smartphone,
   Wifi,
   WifiOff,
   Check,
@@ -369,22 +23,17 @@ import {
   HelpCircle,
   LogOut,
   QrCode,
-  Scan,
   Globe,
   ShoppingCart,
   Zap,
   Phone,
   Mail,
-  MapPin,
-  Calendar,
-  Clock,
   RefreshCw,
   TrendingUp,
   AlertCircle,
   ChevronRight,
   Search,
   Filter,
-  MoreHorizontal
 } from 'lucide-react'
 
 export default function NexusPayApp() {
@@ -394,8 +43,7 @@ export default function NexusPayApp() {
   const [isOfflineMode, setIsOfflineMode] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [successMessage, setSuccessMessage] = useState('')
-  const [showQRScanner, setShowQRScanner] = useState(false)
-  const [notifications, setNotifications] = useState(3)
+  const [notifications] = useState(3)
   
   // Form states
   const [sendMoneyForm, setSendMoneyForm] = useState({
@@ -472,14 +120,15 @@ export default function NexusPayApp() {
     { name: 'Paul', initial: 'PM', color: 'bg-orange-500', phone: '+237 6XX XXX XX4' }
   ]
 
+  
   // Screen navigation functions
-  const switchScreen = (screen, navItem = null) => {
-    setCurrentScreen(screen)
-    if (navItem) setActiveNavItem(navItem)
-  }
+ const switchScreen = (screen: string, navItem: string | null = null) => {
+  setCurrentScreen(screen)
+  if (navItem) setActiveNavItem(navItem)
+}
 
   // Success animation
-  const showSuccessAnimation = (message) => {
+  const showSuccessAnimation = (message: string) => {
     setSuccessMessage(message)
     setShowSuccess(true)
     setTimeout(() => {
@@ -541,14 +190,17 @@ export default function NexusPayApp() {
     }
   }
 
-  // Phone mockup component
-  const PhoneFrame = ({ children }) => (
-    <div className="phone-container">
-        <div className="h-full bg-white rounded-[2rem] overflow-hidden relative flex flex-col">
-          {children}
-        </div>
-      </div>
-  )
+interface PhoneFrameProps {
+  children: React.ReactNode
+}
+
+const PhoneFrame = ({ children }: PhoneFrameProps) => (
+  <div className="phone-container">
+    <div className="h-full bg-white rounded-[2rem] overflow-hidden relative flex flex-col">
+      {children}
+    </div>
+  </div>
+)
 
   // Status bar component
   const StatusBar = () => (
@@ -572,37 +224,50 @@ export default function NexusPayApp() {
     </div>
   )
 
-  // Header component
-  const Header = ({ title, showBack = false, showNotifications = false }) => (
-    <div className="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-20 to-purple-700 text-white">
-      <div className="flex items-center">
-        {showBack && (
-          <button 
-            onClick={() => switchScreen('home', 'home')}
-            className="mr-3 p-2 rounded-full hover:bg-white/10 transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-        )}
-         <div className="">
-                <Image src={nexusLogo} alt="Nexus Pay Logo" width={48} height={47} className="rounded-md" />
-        </div>
-      </div>
-      {showNotifications && (
+ const Header = ({
+  showBack = false,
+  showNotifications = false,
+  title,
+}: {
+  showBack?: boolean
+  showNotifications?: boolean
+  title?: string
+}) => (
+  <div className="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-20 to-purple-700 text-white">
+    <div className="flex items-center">
+      {showBack && (
         <button 
-          className="relative p-2 rounded-full hover:bg-white/10 transition-colors"
-          onClick={() => switchScreen('notifications')}
+          onClick={() => switchScreen('home', 'home')}
+          className="mr-3 p-2 rounded-full hover:bg-white/10 transition-colors"
         >
-          <Bell className="w-6 h-6" />
-          {notifications > 0 && (
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center">
-              {notifications}
-            </span>
-          )}
+          <ArrowLeft className="w-5 h-5" />
         </button>
       )}
+      <div>
+        <Image src={nexusLogo} alt="Nexus Pay Logo" width={48} height={47} className="rounded-md" />
+      </div>
     </div>
-  )
+
+    {title && (
+      <h1 className="text-lg font-semibold">{title}</h1>
+    )}
+
+    {showNotifications && (
+      <button 
+        className="relative p-2 rounded-full hover:bg-white/10 transition-colors"
+        onClick={() => switchScreen('notifications')}
+      >
+        <Bell className="w-6 h-6" />
+        {notifications > 0 && (
+          <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center">
+            {notifications}
+          </span>
+        )}
+      </button>
+    )}
+  </div>
+)
+
 
   // Bottom navigation
   const BottomNav = () => (
@@ -1312,7 +977,7 @@ export default function NexusPayApp() {
 
         {/* Transaction List */}
         <div className="bg-white rounded-xl overflow-hidden">
-          {transactions.map((transaction, index) => (
+          {transactions.map((transaction) => (
             <div key={transaction.id} className="p-4 border-b border-gray-50 last:border-b-0">
               <div className="flex items-center space-x-3">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center ${

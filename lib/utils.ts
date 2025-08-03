@@ -32,15 +32,14 @@ export function generateId(): string {
   return Math.random().toString(36).substr(2, 9);
 }
 
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
+export function debounce(
   wait: number
-): (...args: Parameters<T>) => void {
+): () => void {
   let timeout: NodeJS.Timeout;
 
-  return (...args: Parameters<T>) => {
+  return () => {
     clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
+    timeout = setTimeout(() =>wait);
   };
 }
 

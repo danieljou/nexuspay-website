@@ -492,7 +492,7 @@ export default function Footer() {
                 {t('company')}
               </h3>
               <ul className="space-y-3">
-                {footerLinks.company.map((link, index) => (
+                {footerLinks.company.map((link) => (
                   <li key={link.key}>
                     <a
                       href={link.href}
@@ -517,7 +517,7 @@ export default function Footer() {
                 {t('resources')}
               </h3>
               <ul className="space-y-3">
-                {footerLinks.resources.map((link, index) => (
+                {footerLinks.resources.map((link) => (
                   <li key={link.key}>
                     <a
                       href={link.href}
@@ -544,7 +544,7 @@ export default function Footer() {
                   {t('legal')}
                 </h3>
                 <ul className="space-y-3">
-                  {footerLinks.legal.map((link, index) => (
+                  {footerLinks.legal.map((link) => (
                     <li key={link.key}>
                       <a
                         href={link.href}

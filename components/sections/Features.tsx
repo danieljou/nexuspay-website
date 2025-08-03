@@ -1,36 +1,38 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import React from 'react'
+
 import {
-  CreditCard,
+  ArrowDownToLine,
   ArrowUpDown,
-  Smartphone,
-  Shield,
-  Fingerprint,
-  Lock,
-  PieChart,
-  Target,
   Bell,
-  Sparkles,
+  Building2,
   CheckCircle2,
   ChevronRight,
-  UserPlus,
-  Link2,
-  Zap,
+  CreditCard,
   Download,
-  Mail,
   Eye,
   EyeOff,
-  Building2,
-  Banknote,
+  Fingerprint,
+  Link2,
+  Lock,
+  Mail,
+  MessageSquare,
+  PieChart,
   Send,
-  ArrowDownToLine,
-  MessageSquare
+  Shield,
+  Smartphone,
+  Sparkles,
+  Target,
+  UserPlus,
+  Zap
 } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import FeaturesModal from '../modals/FeaturesModal'
 
 const useLanguage = () => ({
-  t: (key) => {
-    const translations = {
+  t: (key: string | number) => {
+  const translations: { [key: string]: string } = {
       // Features translations
       'features-badge': 'Fonctionnalités',
       'features-title': 'Tout ce dont vous avez besoin',
@@ -87,12 +89,13 @@ const useLanguage = () => ({
 
 const Features = () => {
   const { t } = useLanguage()
-  const [activeTab, setActiveTab] = useState('payments')
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
   const [hoveredStep, setHoveredStep] = useState<number | null>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const sectionRef = useRef(null)
+  const [isFeaturesModalOpen, setIsFeaturesModalOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState<FeatureTabs>('payments')
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -112,7 +115,7 @@ const Features = () => {
     return () => observer.disconnect()
   }, [])
 
-  const tabs = [
+  const tabs: { id: FeatureTabs; label: string | number; icon: React.ReactElement }[] = [
     { id: 'payments', label: t('payments'), icon: <CreditCard className="w-5 h-5" /> },
     { id: 'security', label: t('security'), icon: <Shield className="w-5 h-5" /> },
     { id: 'account', label: t('account'), icon: <PieChart className="w-5 h-5" /> }
@@ -199,7 +202,11 @@ const Features = () => {
     ]
   }
 
-  const currentFeatures = featuresData[activeTab]
+  type FeatureTabs = 'payments' | 'security' | 'account'
+
+
+const currentFeatures = featuresData[activeTab]  // OK, pas d'erreur TS
+
 
   return (
     <>
@@ -304,19 +311,19 @@ const Features = () => {
       `}</style>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 bg-gradient-to-br from-[#FFEDF3] via-white to-[#ADEED9]/20">
+      <section id="features" className="py-20 px-4 ">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#0ABAB5]/10 to-[#56DFCF]/10 rounded-full mb-8 border border-[#0ABAB5]/20 backdrop-blur-sm">
-              <Sparkles className="w-5 h-5 mr-3 text-[#0ABAB5]" />
-              <span className="text-sm text-[#0ABAB5] font-semibold tracking-wide uppercase">
+              <Smartphone className="w-5 h-5 mr-3 text-[#7A85C1]" />
+              <span className="text-sm from-primary to-primary-dark font-semibold tracking-wide uppercase">
                 {t('features-badge')}
               </span>
             </div>
 
             <h2 className="text-5xl md:text-6xl font-extrabold mb-8 leading-tight">
-              <span className="bg-gradient-to-r from-[#0ABAB5] via-[#56DFCF] to-[#ADEED9] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
                 {t('features-title')}
               </span>
             </h2>
@@ -335,7 +342,7 @@ const Features = () => {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center space-x-3 px-8 py-4 rounded-xl text-sm font-semibold transition-all duration-500 ${
                     activeTab === tab.id
-                      ? 'bg-gradient-to-r from-[#0ABAB5] to-[#56DFCF] text-white shadow-lg shadow-[#0ABAB5]/25 scale-105'
+                      ? 'bg-gradient-to-r from-[#7A85C1] to-primary-dark text-white shadow-lg shadow-[#0ABAB5]/25 scale-105'
                       : 'text-gray-600 hover:text-[#0ABAB5] hover:bg-white/50'
                   }`}
                 >
@@ -394,13 +401,15 @@ const Features = () => {
 
           {/* CTA */}
           <div className="text-center mt-20">
-            <button className="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-[#0ABAB5] to-[#56DFCF] rounded-full text-white font-bold text-lg hover:shadow-2xl hover:shadow-[#0ABAB5]/30 transition-all duration-500 transform hover:scale-110">
-              <CheckCircle2 className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
-              Voir toutes les fonctionnalités
+            <button className="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-[#7A85C1] to-[#56DFCF] rounded-full text-white font-bold text-lg hover:shadow-2xl hover:shadow-[#0ABAB5]/30 transition-all duration-500 transform hover:scale-110"
+              onClick={() => setIsFeaturesModalOpen(true)}>
+                <CheckCircle2 className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
+                Voir toutes les fonctionnalités
             </button>
           </div>
         </div>
       </section>
+     
 
       {/* How It Works Section */}
       <section ref={sectionRef} id="how-it-works" className="py-20 px-4 bg-gradient-to-br from-white via-[#FFEDF3]/30 to-[#ADEED9]/10">
@@ -415,7 +424,7 @@ const Features = () => {
             </div>
 
             <h2 className="text-5xl md:text-6xl font-extrabold mb-8 leading-tight">
-              <span className="bg-gradient-to-r from-[#0ABAB5] via-[#56DFCF] to-[#ADEED9] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
                 {t('how-it-works-title')}
               </span>
             </h2>
@@ -571,12 +580,12 @@ const Features = () => {
                 <div className="p-6">
                   <div className="mb-6">
                     <div className="text-sm text-gray-500 mb-2">{t('your-balance')}</div>
-                    <div className="text-3xl font-bold text-gray-800">27,500.00 F</div>
+                    <div className="text-3xl font-bold text-gray-800">27 500.00 F</div>
                   </div>
                   <div className="bg-gradient-to-r from-[#0ABAB5] to-[#56DFCF] rounded-xl p-4 text-white mb-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full transform translate-x-10 -translate-y-10"></div>
                     <div className="text-sm opacity-80 mb-2">{t('debit')}</div>
-                    <div className="text-xl font-semibold mb-4">129,700.00 F</div>
+                    <div className="text-xl font-semibold mb-4">129 700.00 F</div>
                     <div className="flex justify-between items-center">
                       <div className="text-sm">**** **** 7745</div>
                       <div className="text-sm">10/28</div>
@@ -603,7 +612,7 @@ const Features = () => {
 
           {/* Bottom CTA */}
           <div className={`text-center mt-20 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`} style={{animationDelay: '0.8s'}}>
-            <button className="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-[#0ABAB5] via-[#56DFCF] to-[#ADEED9] rounded-full text-white font-bold text-lg hover:shadow-2xl hover:shadow-[#0ABAB5]/30 transition-all duration-500 transform hover:scale-110 relative overflow-hidden">
+            <button className="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-primary to-primary-dark rounded-full text-white font-bold text-lg hover:shadow-2xl hover:shadow-[#0ABAB5]/30 transition-all duration-500 transform hover:scale-110 relative overflow-hidden">
               <div className="absolute inset-0 shimmer"></div>
               <Download className="w-6 h-6 mr-3 group-hover:animate-bounce" />
               <span className="relative z-10">Commencer Maintenant</span>
@@ -612,7 +621,12 @@ const Features = () => {
           </div>
         </div>
       </section>
+      <FeaturesModal
+        isOpen={isFeaturesModalOpen}
+        onClose={() => setIsFeaturesModalOpen(false)}
+      />
     </>
+    
   )
 }
 

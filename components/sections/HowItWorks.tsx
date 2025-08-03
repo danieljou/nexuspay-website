@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  UserPlus, 
   CreditCard, 
-  Smartphone, 
   Send, 
   CheckCircle, 
   ArrowRight,
   Download,
-  Scan,
   Wallet,
   Shield,
   Zap,
@@ -89,7 +86,7 @@ const HowItWorks: React.FC = () => {
       setActiveStep((prev) => (prev + 1) % steps.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  });
 
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-bg-secondary to-bg-primary relative overflow-hidden">
@@ -204,7 +201,7 @@ const HowItWorks: React.FC = () => {
             Prêt à révolutionner vos paiements ?
           </h3>
           <p className="text-text-secondary mb-6 max-w-2xl mx-auto">
-            Rejoignez des milliers d'utilisateurs qui font confiance à NexusPAY pour leurs transactions quotidiennes
+            Rejoignez des milliers d&apos;utilisateurs qui font confiance à NexusPAY pour leurs transactions quotidiennes
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

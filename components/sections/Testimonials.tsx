@@ -8,7 +8,6 @@ import {
   ChevronRight, 
   Play, 
   Pause,
-  Heart,
   MessageCircle,
   Award,
   TrendingUp
@@ -417,7 +416,7 @@ export default function Testimonials() {
 
                       {/* Testimonial Text */}
                       <blockquote className="text-text-secondary text-xl md:text-2xl mb-10 text-center italic leading-relaxed font-light relative z-10">
-                        "{testimonial.text}"
+                        &ldquo;{testimonial.text}&ldquo;
                       </blockquote>
 
                       {/* Author Info */}

@@ -4,12 +4,14 @@ import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useLanguage } from '../../context/LanguageContext'
 import { useTheme } from '../../context/ThemeContext'
-import MobileMenu from './MobileMenu'
+import AIAssistant from '../modals/AIAssistantModal'
 import LoginModal from '../modals/LoginModal'
-import SignupModal from '../modals/SignupModal' // Make sure this is the right path
+import SignupModal from '../modals/SignupModal'
+import MobileMenu from './MobileMenu'
+
 
 import Image from 'next/image'
-import nexusLogo from '../../public/images/nexuslogo.png' // Adjust path if needed
+import nexusLogo from '../../public/images/nexuslogo.png'
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -19,6 +21,7 @@ export default function Header() {
   const { language, setLanguage, t } = useLanguage()
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false)
+  const [isAIAssistantOpen, setIsAIAssistantOpen] = useState(false)
 
   return (
     <>
@@ -140,9 +143,9 @@ export default function Header() {
                 </div>
               )}
             </div>
-            <button id="aiAssistantBtn" class="btn btn-outline hidden sm:flex">
-                        <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            <button id="aiAssistantBtn" className="btn btn-outline hidden sm:flex" onClick={() => setIsAIAssistantOpen(true)}>
+                        <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                         </svg>
                         AI Help
             </button>
@@ -195,7 +198,12 @@ export default function Header() {
         setIsLoginModalOpen(false)
         setIsSignupModalOpen(true)
       }}
-    />
+      />
+      
+      <AIAssistant
+        isOpen={isAIAssistantOpen}
+        onClose={() => setIsAIAssistantOpen(false)}       
+      />
   </>
   )
 }
